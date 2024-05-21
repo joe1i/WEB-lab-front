@@ -49,6 +49,7 @@ import { mapState, mapActions } from 'vuex';
       if (storedArt) {
         const artData = JSON.parse(storedArt);
         this.$store.commit('SET_SELECTED_ART', artData);
+        //
       }
       else
       {
