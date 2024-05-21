@@ -20,7 +20,7 @@
 
 <script>
 import MenuComponent from '@/components/Menu.vue'
-import LoginComponent from '@/components/Login.vue'
+import LoginComponent from '@/components/LoginPanel.vue'
 
 export default {
   components: {

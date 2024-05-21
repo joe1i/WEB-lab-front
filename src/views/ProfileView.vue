@@ -1,4 +1,3 @@
-<!-- ProfileView.vue -->
 <template>
   <div>
     <MenuComponent />
@@ -15,18 +14,21 @@
 
     <main class="main">
       <ProfileComponent @save="handleProfile" @save-error="handleSaveError" />
+      <CollectionComponent />
     </main>
   </div>
 </template>
 
 <script>
 import MenuComponent from '@/components/Menu.vue'
-import ProfileComponent from '@/components/Profile.vue'
+import ProfileComponent from '@/components/ProfilePanel.vue'
+import CollectionComponent from '@/components/Collection.vue'
 
 export default {
   components: {
     ProfileComponent,
-    MenuComponent
+    MenuComponent,
+    CollectionComponent
   },
   methods: {
     handleProfile() {

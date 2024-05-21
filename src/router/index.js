@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import LoginView from '@/views/LoginView.vue';
 import RegisterView from '@/views/RegisterView.vue';
-import ArtsListView from '@/views/ArtsListView.vue';
+import ArtsListView from '@/views/MainView.vue';
 import ProfileView from '@/views/ProfileView.vue';
 import ArtInfoView from '@/views/ArtInfoView.vue';
 import AboutView from '@/views/AboutView.vue';

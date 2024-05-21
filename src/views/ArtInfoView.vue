@@ -10,7 +10,7 @@
   
   <script>
   import MenuComponent from '@/components/Menu.vue';
-  import ArtInfoComponent from '@/components/ArtInfo.vue';
+  import ArtInfoComponent from '@/components/ArtInfoPanel.vue';
   import { mapState, mapActions } from 'vuex';
   
   export default {

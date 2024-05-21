@@ -1,4 +1,3 @@
-<!-- Login.vue -->
 <template>
   <div>
     <section class="signin">

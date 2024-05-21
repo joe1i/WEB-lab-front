@@ -20,7 +20,7 @@
   
   <script>
   import MenuComponent from '@/components/Menu.vue'
-  import RegisterComponent from '@/components/Register.vue'
+  import RegisterComponent from '@/components/RegisterPanel.vue'
   
   export default {
     components: {
