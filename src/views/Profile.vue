@@ -26,8 +26,8 @@ import CollectionComponent from '@/components/Collection.vue'
 
 export default {
   components: {
-    ProfileComponent,
     MenuComponent,
+    ProfileComponent,
     CollectionComponent
   },
   methods: {

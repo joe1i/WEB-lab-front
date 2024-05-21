@@ -89,49 +89,49 @@
       })
     },
     methods: {
-      ...mapActions(['registerUser']),
-      async register() {
-        try {
-            if (!this.user.name || !this.user.email || !this.user.password || !this.user.city || !this.user.about) {
-                throw new Error('Всі поля є обов\'язковими');
-            }
+        ...mapActions(['REGISTER_USER']),
+        async register() {
+            try {
+                if (!this.user.name || !this.user.email || !this.user.password || !this.user.city || !this.user.about) {
+                    throw new Error('Всі поля є обов\'язковими');
+                }
+        
+                if (!this.user.name.trim()) {
+                    throw new Error('Ім\'я користувача не може бути порожнім');
+                }
     
-            if (!this.user.name.trim()) {
-                throw new Error('Ім\'я користувача не може бути порожнім');
-            }
-  
-            if (!this.user.city.trim()) {
-                throw new Error('Місто не може бути порожнім');
-            }
+                if (!this.user.city.trim()) {
+                    throw new Error('Місто не може бути порожнім');
+                }
 
-            if (!this.user.about.trim()) {
-                throw new Error('Інформація про Вас не може бути порожньою');
-            }
+                if (!this.user.about.trim()) {
+                    throw new Error('Інформація про Вас не може бути порожньою');
+                }
 
-            if (!this.user.city.match(/^[a-zA-Z\-\.а-яА-ЯіїЇєЄёЁґҐіІЇЙоОуУУЄЄхХцЦчЧшШщЩьЬюЮяЯ]/)) {
-                throw new Error('Неправильний формат міста');
-            }
-  
-            if (!this.user.email.trim()) {
-                throw new Error('Електронна пошта не може бути порожньою');
-            }
+                if (!this.user.city.match(/^[a-zA-Z\-\.а-яА-ЯіїЇєЄёЁґҐіІЇЙоОуУУЄЄхХцЦчЧшШщЩьЬюЮяЯ]/)) {
+                    throw new Error('Неправильний формат міста');
+                }
     
-            if (!this.user.password.trim()) {
-                throw new Error('Пароль не може бути порожнім');
-            }
+                if (!this.user.email.trim()) {
+                    throw new Error('Електронна пошта не може бути порожньою');
+                }
+        
+                if (!this.user.password.trim()) {
+                    throw new Error('Пароль не може бути порожнім');
+                }
+        
+                if (!this.user.email.match(/^[a-zA-Z0-9_\-\.]+@[a-zA-Z0-9_\-\.]+\.[a-zA-Z]{2,}$/)) {
+                    throw new Error('Неправильний формат електронної пошти');
+                }
+        
+                if (this.user.password.length < 6) {
+                    throw new Error('Пароль повинен містити 6 або більше символів');
+                }
     
-            if (!this.user.email.match(/^[a-zA-Z0-9_\-\.]+@[a-zA-Z0-9_\-\.]+\.[a-zA-Z]{2,}$/)) {
-                throw new Error('Неправильний формат електронної пошти');
-            }
-    
-            if (this.user.password.length < 6) {
-                throw new Error('Пароль повинен містити 6 або більше символів');
-            }
-  
-            await this.registerUser(this.user);
-                localStorage.setItem('user', JSON.stringify(this.user));
-                localStorage.setItem('rememberLog', "false");
-                this.$emit('register');
+                await this.REGISTER_USER(this.user);
+                    localStorage.setItem('user', JSON.stringify(this.user));
+                    localStorage.setItem('rememberLog', "false");
+                    this.$emit('register');
             } catch (err) {
                 console.error('Помилка при реєстрації:', err);
                 this.$emit('register-error', err.message);

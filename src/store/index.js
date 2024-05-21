@@ -41,7 +41,7 @@ export default createStore({
     }
   },
   actions: {
-    async loginUser({ commit }, userData) {
+    async LOGIN_USER({ commit }, userData) {
       try {
         const response = await axios.get('http://localhost:3000/collectors', {
           params: {
@@ -62,7 +62,7 @@ export default createStore({
         throw error;
       }
     },
-    async updateUser({ commit }, userData) {
+    async UPDATE_USER({ commit }, userData) {
       try {
         const response = await axios.post('http://localhost:3000/collectors/update', userData);
 
@@ -75,7 +75,7 @@ export default createStore({
         throw error;
       }
     },
-    async collectorsCollection({ commit }, buyerID) {
+    async USER_COLLECTION({ commit }, buyerID) {
       try {
         const response = await axios.get('http://localhost:3000/collectors/collection', {
           params: {
@@ -105,7 +105,7 @@ export default createStore({
         console.error('Error fetching arts:', error);
       }
     },
-    async availableArts({ commit }) {
+    async AVAILABLE_ARTS({ commit }) {
       try {
         const response = await axios.get('http://localhost:3000/arts/available_arts');
         
@@ -131,10 +131,10 @@ export default createStore({
         console.error('Error fetching arts:', error);
       }
     },
-    selectArt({ commit }, art) {
+    SELECT_ART({ commit }, art) {
       commit('SET_SELECTED_ART', art);
     },
-    async buyArt({ commit },  { artID, buyerID }) {
+    async BUY_ART({ commit },  { artID, buyerID }) {
       console.log(buyerID);
       try {
         const response = await axios.post('http://localhost:3000/arts/buy', {
@@ -150,7 +150,7 @@ export default createStore({
         console.error('Error fetching arts:', error);
       }
     },
-    async registerUser({ commit }, userData) {
+    async REGISTER_USER({ commit }, userData) {
       try {
         const responseCheck = await axios.get('http://localhost:3000/collectors', {
           params: {

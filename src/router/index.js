@@ -1,10 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import LoginView from '@/views/LoginView.vue';
-import RegisterView from '@/views/RegisterView.vue';
-import ArtsListView from '@/views/MainView.vue';
-import ProfileView from '@/views/ProfileView.vue';
-import ArtInfoView from '@/views/ArtInfoView.vue';
-import AboutView from '@/views/AboutView.vue';
+import LoginView from '@/views/Login.vue';
+import RegisterView from '@/views/Register.vue';
+import ArtsListView from '@/views/Main.vue';
+import ProfileView from '@/views/Profile.vue';
+import ArtInfoView from '@/views/ArtInfo.vue';
+import AboutView from '@/views/About.vue';
 
 const router = createRouter({
   history: createWebHistory(),

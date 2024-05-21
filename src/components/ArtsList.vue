@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 export default {
   computed: {
@@ -37,7 +37,7 @@ export default {
   watch: {
     arts: {
       handler(newArts) {
-        this.columns = [[], [], []]; // Очищуємо колонки перед новим розподілом
+        this.columns = [[], [], []]; 
         newArts.forEach((artwork, index) => {
           this.addArtworkToColumn(artwork);
         });
@@ -50,15 +50,15 @@ export default {
       this.columns[this.currentIndex].unshift(artwork);
       this.currentIndex = (this.currentIndex + 1) % 3;
     },
-    selectArtwork(artwork) {
-
-      this.$store.dispatch('selectArt', artwork);
+    ...mapActions(['SELECT_ART']),
+    async selectArtwork(artwork) {
+      await this.SELECT_ART(artwork);
       localStorage.setItem('selectedArt', JSON.stringify(artwork));
       this.$emit('artSelected', artwork);
     }
   },
   mounted() {
-      this.$store.dispatch('availableArts');
+      this.$store.dispatch('AVAILABLE_ARTS');
     }
 };
 </script>

@@ -11,17 +11,14 @@
   <script>
   import MenuComponent from '@/components/Menu.vue';
   import ArtInfoComponent from '@/components/ArtInfoPanel.vue';
-  import { mapState, mapActions } from 'vuex';
   
   export default {
     components: {
-      ArtInfoComponent,
-      MenuComponent
+      MenuComponent,
+      ArtInfoComponent
     },
     methods: {
       handleArt(art) {
-        // Додайте вашу логіку тут
-        console.log('Selected art:', art);
         if(art)
         {
             alert("Покупку виконано успішно!");

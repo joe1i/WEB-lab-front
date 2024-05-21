@@ -81,7 +81,7 @@ export default {
     })
   },
   methods: {
-    ...mapActions(['updateUser']),
+    ...mapActions(['UPDATE_USER']),
     async save() {
       try {
         if (!this.user.name || !this.user.city || !this.user.about) {
@@ -104,7 +104,7 @@ export default {
           throw new Error('Неправильний формат міста');
         }
 
-        await this.updateUser(this.user);
+        await this.UPDATE_USER(this.user);
         localStorage.setItem('user', JSON.stringify(this.user));
         this.$emit('save');
       } catch (err) {
@@ -124,7 +124,7 @@ export default {
     }
 
     const buyerID = this.$store.state.user.userID;
-    this.$store.dispatch('collectorsCollection', buyerID);
+    this.$store.dispatch('USER_COLLECTION', buyerID);
   }
 }
 </script>

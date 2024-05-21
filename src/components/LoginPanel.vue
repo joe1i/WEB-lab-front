@@ -39,7 +39,7 @@ export default {
     })
   },
   methods: {
-    ...mapActions(['loginUser']),
+    ...mapActions(['LOGIN_USER']),
     async login() {
       try {
         if (!this.user.email || !this.user.password) {
@@ -64,7 +64,7 @@ export default {
 
         localStorage.setItem('rememberLog', this.remember);
 
-        await this.loginUser(this.user);
+        await this.LOGIN_USER(this.user);
         localStorage.setItem('user', JSON.stringify(this.user));
         this.$emit('login');
       } catch (err) {

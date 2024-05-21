@@ -24,12 +24,11 @@
   
   export default {
     components: {
-      ArtsListComponent,
-      MenuComponent
+      MenuComponent,
+      ArtsListComponent
     },
     methods: {
       handleArt(art) {
-        // Додайте вашу логіку тут
         console.log('Selected art:', art);
         if(art)
         {
