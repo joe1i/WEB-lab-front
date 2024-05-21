@@ -50,15 +50,26 @@ export default {
       this.columns[this.currentIndex].unshift(artwork);
       this.currentIndex = (this.currentIndex + 1) % 3;
     },
-    ...mapActions(['SELECT_ART']),
+    ...mapActions(['SELECT_ART', 'AVAILABLE_ARTS']),
     async selectArtwork(artwork) {
-      await this.SELECT_ART(artwork);
-      localStorage.setItem('selectedArt', JSON.stringify(artwork));
-      this.$emit('artSelected', artwork);
+      try {
+        await this.SELECT_ART(artwork);
+        localStorage.setItem('selectedArt', JSON.stringify(artwork));
+        this.$emit('select', artwork);
+      } catch (err) {
+        console.error('Помилка при виборі арту:', err);
+        this.$emit('select-error', err.message);
+      }
+      
     }
   },
-  mounted() {
-      this.$store.dispatch('AVAILABLE_ARTS');
+  async mounted() {
+      try {
+        await this.AVAILABLE_ARTS();
+      } catch (err) {
+        console.error('Помилка:', err);
+        this.$emit('select-error', err.message);
+      }
     }
 };
 </script>

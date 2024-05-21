@@ -81,7 +81,7 @@ export default {
     })
   },
   methods: {
-    ...mapActions(['UPDATE_USER']),
+    ...mapActions(['UPDATE_USER', 'SET_USER', 'USER_COLLECTION']),
     async save() {
       try {
         if (!this.user.name || !this.user.city || !this.user.about) {
@@ -113,7 +113,7 @@ export default {
       }
     }
   },
-  mounted() {
+  async mounted() {
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
       const userData = JSON.parse(storedUser);
@@ -124,7 +124,7 @@ export default {
     }
 
     const buyerID = this.$store.state.user.userID;
-    this.$store.dispatch('USER_COLLECTION', buyerID);
+    await this.USER_COLLECTION(buyerID);
   }
 }
 </script>

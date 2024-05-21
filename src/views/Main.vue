@@ -13,7 +13,7 @@
       </header>
   
       <main class="main">
-        <ArtsListComponent @artSelected="handleArt" />
+        <ArtsListComponent @select="handleSelect" @select-error="handleSelectError"/>
       </main>
     </div>
   </template>
@@ -28,12 +28,20 @@
       ArtsListComponent
     },
     methods: {
-      handleArt(art) {
-        console.log('Selected art:', art);
-        if(art)
-        {
-            window.location = '/art_info.html'
+      handleSelect(art) {
+        try {
+          console.log('Selected art:', art);
+          if(art)
+          {
+              window.location = '/art_info.html'
+          }
+        } catch (err) {
+          console.error('Помилка при обробці вибору арту:', err);
+          alert('Не вдалося обробити вибір. Будь ласка, спробуйте знову.');
         }
+      },
+      handleSelectError(errorMessage) {
+        alert(`Помилка: ${errorMessage}`);
       }
     }
   };
